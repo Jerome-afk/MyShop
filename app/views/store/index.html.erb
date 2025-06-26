@@ -1,0 +1,29 @@
+
+<h1>Welcome to MyShop</h1>
+
+<div class="products-grid">
+  <% @products.each do |product| %>
+    <div class="product-card">
+      <% if product.image? %>
+        <%= image_tag product.image.thumb.url, alt: product.title, class: "product-image" %>
+      <% end %>
+      
+      <div class="product-info">
+        <h3><%= link_to product.title, product %></h3>
+        <p class="price">$<%= product.price %></p>
+        <p class="seller">Sold by: <%= seller_name(product) %></p>
+        
+        <div class="product-actions">
+          <%= link_to "View Details", product, class: "btn btn-primary" %>
+          <% if user_signed_in? %>
+            <%= link_to "Add to Cart", add_to_cart_product_path(product), method: :post, class: "btn btn-secondary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<% if @products.empty? %>
+  <p>No products available yet. <%= link_to "Be the first to sell!", new_product_path if user_signed_in? %></p>
+<% end %>
