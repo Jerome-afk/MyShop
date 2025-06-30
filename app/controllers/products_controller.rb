@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
       @product = current_user.products.build(product_params)
       
       if @product.save
-        redirect_to @product, notice: 'Product was successfully created.'
+        redirect_to root_path, notice: 'Product was successfully created.'
       else
         render :new
       end
@@ -39,6 +39,7 @@ class ProductsController < ApplicationController
   
     def destroy
       @product.destroy
+      before_action :check_owner, only: [:edit, :update, :destroy]
       redirect_to products_url, notice: 'Product was successfully deleted.'
     end
   

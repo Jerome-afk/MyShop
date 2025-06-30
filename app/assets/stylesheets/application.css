@@ -12,6 +12,8 @@
  /* *= require_self */
  /* */ */
 
+
+ 
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -179,3 +181,6 @@ body {
 .cart-link:hover {
   background-color: #1e7e34;
 }
+
+@import "devise";
+@import "product";
