@@ -16,7 +16,7 @@
         <div class="product-actions">
           <%= link_to "View Details", product, class: "btn btn-primary" %>
           <% if user_signed_in? %>
-            <%= link_to "Add to Cart", add_to_cart_product_path(product), method: :post, class: "btn btn-secondary" %>
+            <%= button_to "Add to Cart", add_to_cart_product_path(product), method: :post, class: "btn btn-secondary" %>
           <% end %>
         </div>
       </div>

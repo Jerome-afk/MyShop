@@ -7,13 +7,13 @@ Rails.application.routes.draw do
 
   resources :products do
     member do
-      post 'add_to_cart'
+      post 'add_to_cart' => 'carts#add_item'
     end
   end
 
   resources :carts, only: [:show, :destroy] do
     member do
-      delete 'remove_item'
+      delete 'remove_item' => 'carts#remove_item'
     end
   end
 
